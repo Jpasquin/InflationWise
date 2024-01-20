@@ -15,6 +15,7 @@
   "dependencies": {
     "@quasar/extras": "^1.16.4",
     "@unocss/preset-uno": "^0.58.3",
+    "@unocss/webpack": "^0.58.3",
     "quasar": "^2.6.0",
     "unocss": "^0.58.3",
     "vue": "^3.0.0",

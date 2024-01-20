@@ -81,9 +81,14 @@ module.exports = configure(function (/* ctx */) {
           UnoCSS({
             theme: {
               colors: {
-                primary: '#f4a548',
+                primary: '#0080FE',
                 secondary: '#254365',
                 tertiary: '#f5f5f5'
+              },
+              extend: {
+                fontFamily: {
+                  custom: ['Cereal', 'sans-serif'],
+                }
               }
             },
             presets: [
