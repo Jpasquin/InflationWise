@@ -10,7 +10,8 @@
 
 
 const { configure } = require('quasar/wrappers');
-
+const UnoCSS = require('unocss/vite').default
+const presetUno = require('@unocss/preset-uno').default
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -30,8 +31,7 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      
-      
+      'UnoCSS',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -76,7 +76,22 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf (viteConf) {
+        viteConf.plugins.push(
+          UnoCSS({
+            theme: {
+              colors: {
+                primary: '#f4a548',
+                secondary: '#254365',
+                tertiary: '#f5f5f5'
+              }
+            },
+            presets: [
+              presetUno()
+            ]
+          })
+        )
+      },
       // viteVuePluginOptions: {},
 
       
