@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const openai = new OpenAI({ apiKey: apiKey });
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.post("/createAnalysis", async (req, res) => {
   const formData = req.body; // Form data is available in req.body
   const result = await main(formData);
-  res.send(result.impact);
+  res.send(result);
 });
 
 app.get('/test', (req, res) => {
@@ -29,7 +29,7 @@ app.listen(port, () => {
 });
 
 async function main(data) {
-    let arr_debts = JSON.parse(data).debts;
+    let arr_debts = data.debts
     console.log('BABABOUEY')
     console.log(arr_debts)
     let debts = "";
@@ -43,10 +43,10 @@ async function main(data) {
       content: `You are a helpful financial advisor. I will give you information about a client. You will use this information to give him a report on the impact of inflation. These are his debts:
       ${debts}
     
-    These are his total assets: $${assests}
-    Annual salary post taxes: $${salary}
+    These are his total assets: $${data.assets}
+    Annual salary post taxes: $${data.salary}
     
-    His spending is $${spending} a month.
+    His spending is $${data.spending} a month.
     
     The current inflation rate is at 3.4%
     

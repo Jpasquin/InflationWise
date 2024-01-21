@@ -20,7 +20,7 @@ export const useAppStore = defineStore('appStore', {
     async onCreateAnalysis (data) {
       console.log(data)
       try {
-        const response = await axios.post('http://localhost:3000/createAnalysis', JSON.stringify(data));
+        const response = await axios.post('http://localhost:3000/createAnalysis', data);
         return response.data;
       } catch (error) {
         console.error('There was an error with the Axios operation:', error);
