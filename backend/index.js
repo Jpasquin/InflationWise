@@ -3,15 +3,20 @@ const apiKey = "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";
 import OpenAI from "openai";
 import express from "express";
 import cors from "cors";
+import bodyParser from 'body-parser';
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const openai = new OpenAI({ apiKey: apiKey });
 
 const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.post("/", async (req, res) => {
-  const result = await main();
+  const formData = req.body; // Form data is available in req.body
+  const result = await main(formData);
   res.send(result.impact);
 });
 
@@ -19,20 +24,23 @@ app.listen(port, () => {
   console.log("API Running on http://localhost:3000");
 });
 
-async function main() {
+async function main(data) {
+    let arr_debts = data.debts;
+    let debts = "";
+    arr_debts.forEach(element => {
+        debts += `${element.name}, ${element.length} months, $${element.interest}, $${element.total}\n`;
+    });
+
   let messages = [
     {
       role: "system",
       content: `You are a helpful financial advisor. I will give you information about a client. You will use this information to give him a report on the impact of inflation. These are his debts:
-    Name of the debt, payoff length, total interest, total payments.
-    Credit card 1,	31 months (2 years and 7 months),	$1,606.87,	$7,606.85
-    Auto loan,	48 months (4 years),	$2,801.51, $27,801.51
-    Home mortgage,	136 months (11 years and 4 months),	$67,127.50,	$317,127.49
+      ${debts}
     
-    These are his total assets: $50000
-    Annual salary post taxes: $100000
+    These are his total assets: $${assests}
+    Annual salary post taxes: $${salary}
     
-    His spending is 2000$ a month.
+    His spending is $${spending} a month.
     
     The current inflation rate is at 3.4%
     
