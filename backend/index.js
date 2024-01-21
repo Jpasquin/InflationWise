@@ -93,6 +93,9 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
 
 **10-Year Projection:**
 
+
+After this, answer the second prompt and separate them with ****. This is the second prompt. I really need the 4 stars to separate the two prompts.
+Based on the "Financial Report on the Impact of Inflation" produces customized strategies and advice to give the client to improve their financial circumstances. List them as numeric bullet points where the first number is what we do first and everything is consecutive. Include numbers from the report to show that the strategies are personalized.
 `,
     },
   ];
@@ -101,7 +104,7 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
     model: "gpt-4-1106-preview",
   });
   const result = completion.choices[0].message.content;
-
+  console.log(result);
   /*
   messages.push({
     role: "user",
@@ -119,5 +122,9 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
   const result = {impact, strategies}
   */
 
-  return { impact: result };
+  const parts = result.split('****');
+  const partBefore = parts[0].trim();
+  const partAfter = parts[1].trim();
+
+  return { impact: partBefore, strategies: partAfter };
 }
