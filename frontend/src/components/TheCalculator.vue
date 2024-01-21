@@ -6,7 +6,7 @@
       </div>
       <div class="p-4 my-4 rounded-lg bg-grey-3">
         <div class="text-center text-2xl font-bold mb-4 opacity-60">Salary</div>
-        <q-input dense outlined v-model="salary" class="bg-white rounded-lg">
+        <q-input dense borderless v-model="salary" class="bg-white px-4 rounded-lg">
           <template v-slot:prepend>
             <span class="text-base">
               $
@@ -17,7 +17,7 @@
 
       <div class="p-4 my-4 rounded-lg bg-grey-3">
         <div class="text-center text-2xl font-bold mb-4 opacity-60">Monthly Expenses</div>
-        <q-input dense outlined v-model="monthlyExpenses" class="bg-white rounded-lg">
+        <q-input dense borderless v-model="monthlyExpenses" class="bg-white  px-4 rounded-lg">
           <template v-slot:prepend>
             <span class="text-base">
               $
@@ -80,10 +80,13 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, watch, nextTick, defineEmits } from 'vue';
 import { useCalculateDebt } from 'src/services/calculatorHandling';
+import { useAppStore } from 'src/stores/app';
 
+const appStore = useAppStore();
 const { calculateDebt } = useCalculateDebt();
+const emit = defineEmits(['updateCalculator']);
 
 let nextId = 1;
 
@@ -99,6 +102,12 @@ const debts = ref([createNewDebt()])
 const debtsContainer = ref(null) // New reference for the container
 const salary = ref(0)
 const monthlyExpenses = ref(0)
+
+const calculatorObject = ref({
+  salary,
+  monthlyExpenses,
+  debts
+})
 
 const handleDebtCalculation = (remainingBalance, monthlyPayment, interestRate) => {
   const { years, totalInterest, totalPayments } = calculateDebt(
@@ -123,6 +132,16 @@ const addDebt = () => {
     }
   });
 };
+
+watch([salary, monthlyExpenses, debts], () => {
+  calculatorObject.value = {
+    salary: salary.value,
+    monthlyExpenses: monthlyExpenses.value,
+    debts: debts.value.map(debt => ({ ...debt }))
+  };
+
+  emit('updateCalculator', calculatorObject.value);
+}, { deep: true });
 </script>
 
 <style>

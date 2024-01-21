@@ -14,10 +14,14 @@ const openai = new OpenAI({ apiKey: apiKey });
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-app.post("/", async (req, res) => {
+app.post("/createAnalysis", async (req, res) => {
   const formData = req.body; // Form data is available in req.body
   const result = await main(formData);
   res.send(result.impact);
+});
+
+app.get('/test', (req, res) => {
+  res.send('working');
 });
 
 app.listen(port, () => {

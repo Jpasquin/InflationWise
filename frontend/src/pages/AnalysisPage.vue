@@ -34,7 +34,7 @@
           icon="calculate"
           :done="step > 1"
         >
-          <the-calculator />
+          <the-calculator @updateCalculator="calculatorObject = $event" />
         </q-step>
 
         <q-step
@@ -70,7 +70,7 @@
         <q-btn
           no-caps
           unelevated
-          @click="$refs.stepper.next()"
+          @click="onContinue()"
           color="primary" :label="step === 3 ? 'Finish' : 'Continue'"
           class="px-4 py-2 rounded-lg w-fit"
         />
@@ -81,13 +81,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useAppStore } from 'src/stores/app';
 import TheCalculator from 'components/TheCalculator.vue'
 import TheInflationImpact from 'components/TheInflationImpact.vue'
 import TheStrategies from 'components/TheStrategies.vue'
 
+const appStore = useAppStore();
 const step = ref(1)
 const showStepper = ref(false)
 const showIntro = ref(false)
+const calculatorObject = ref({});
+
+const onContinue = async () => {
+  const responseOne = await appStore.testApi();
+  console.log(responseOne)
+  const responseTwo = await appStore.onCreateAnalysis(calculatorObject.value);
+  console.log(responseTwo)
+}
 
 onMounted(() => {
   showIntro.value = true;
