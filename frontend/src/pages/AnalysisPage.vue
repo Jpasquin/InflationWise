@@ -43,7 +43,7 @@
           icon="info"
           :done="step > 2"
         >
-          <the-inflation-impact />
+          <the-inflation-impact :impact="impact" />
         </q-step>
 
         <q-step
@@ -91,12 +91,16 @@ const step = ref(1)
 const showStepper = ref(false)
 const showIntro = ref(false)
 const calculatorObject = ref({});
+const impact = ref(null);
+const strategies = ref(null)
 
 const onContinue = async () => {
-  const responseOne = await appStore.testApi();
-  console.log(responseOne)
-  const responseTwo = await appStore.onCreateAnalysis(calculatorObject.value);
-  console.log(responseTwo)
+  const response = await appStore.onCreateAnalysis(calculatorObject.value);
+  impact.value = response.impact;
+  stepper.next();
+  // strategies.value = response.strategies
+  console.log(response)
+
 }
 
 onMounted(() => {

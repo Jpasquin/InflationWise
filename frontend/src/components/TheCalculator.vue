@@ -70,13 +70,12 @@
 
         <div class="text-center">
           <span class="opacity-60">Payoff Length</span>
-          <div class="text-2xl font-bold mb-4">{{ handleDebtCalculation(debt.remainingBalance, debt.monthlyPayment, debt.interestRate).years }} Years</div>
+          <div class="text-2xl font-bold mb-4">{{ handleDebtCalculation(debt).years }} Years</div>
           <span class="opacity-60">Total Interest</span>
-          <div class="text-2xl font-bold mb-4">${{ handleDebtCalculation(debt.remainingBalance, debt.monthlyPayment, debt.interestRate).totalInterest }}</div>
+          <div class="text-2xl font-bold mb-4">${{ handleDebtCalculation(debt).totalInterest }}</div>
           <span class="opacity-60">Total Payment</span>
-          <div class="text-2xl font-bold mb-4">${{ handleDebtCalculation(debt.remainingBalance, debt.monthlyPayment, debt.interestRate).totalPayments }}</div>
+          <div class="text-2xl font-bold mb-4">${{ handleDebtCalculation(debt).totalPayments }}</div>
         </div>
-
       </div>
     </transition-group>
 
@@ -120,12 +119,16 @@ const calculatorObject = ref({
   assets
 })
 
-const handleDebtCalculation = (remainingBalance, monthlyPayment, interestRate) => {
+const handleDebtCalculation = (debt) => {
   const { years, totalInterest, totalPayments } = calculateDebt(
-    remainingBalance, 
-    monthlyPayment, 
-    interestRate
+    debt.remainingBalance, 
+    debt.monthlyPayment, 
+    debt.interestRate
   );
+
+  debt.years = years;
+  debt.totalInterest = totalInterest;
+  debt.totalPayments = totalPayments;
 
   return {
     years,
