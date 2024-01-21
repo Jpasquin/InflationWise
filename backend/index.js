@@ -30,8 +30,7 @@ app.listen(port, () => {
 
 async function main(data) {
     let arr_debts = data.debts
-    console.log('BABABOUEY')
-    console.log(arr_debts)
+    //console.log(arr_debts)
     let debts = "";
     arr_debts.forEach(element => {
         debts += `${element.name}, ${element.length} months, $${element.interest}, $${element.total}\n`;
@@ -54,7 +53,7 @@ async function main(data) {
     
     Talk directly to your client. And give him bullet points, also show the numbers. Place it in a report format. Don’t use real dollars use nominal values for dollars.
 
-    I want you to use this template.
+    I want you to use this template. Please do not add remarks or notes or anything.
 
     **Financial Report on the Impact of Inflation**
 
@@ -101,9 +100,9 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
     messages,
     model: "gpt-4-1106-preview",
   });
-  const impact = completion.choices[0].message.content;
-  console.log(impact);
+  const result = completion.choices[0].message.content;
 
+  /*
   messages.push({
     role: "user",
     content: 'Based on the "Financial Report on the Impact of Inflation" produces customized strategies and advice to give the client to improve their financial circumstances. List them as numeric bullet points where the first number is what we do first and everything is consecutive. Include numbers from the report to show that the strategies are personalized.',
@@ -117,7 +116,8 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
   const strategies = completion2.choices[0].message.content
   console.log("*********************************************\n\n");
   console.log(strategies);
-
   const result = {impact, strategies}
-  return result;
+  */
+
+  return { impact: result };
 }
