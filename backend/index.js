@@ -33,7 +33,7 @@ async function main(data) {
     //console.log(arr_debts)
     let debts = "";
     arr_debts.forEach(element => {
-        debts += `${element.name}, ${element.length} months, $${element.interest}, $${element.total}\n`;
+        debts += `${element.name}, ${element.years} months, $${element.totalInterest}, $${element.totalPayments}\n`;
     });
 
   let messages = [
