@@ -29,7 +29,9 @@ app.listen(port, () => {
 });
 
 async function main(data) {
-    let arr_debts = data.debts;
+    let arr_debts = JSON.parse(data).debts;
+    console.log('BABABOUEY')
+    console.log(arr_debts)
     let debts = "";
     arr_debts.forEach(element => {
         debts += `${element.name}, ${element.length} months, $${element.interest}, $${element.total}\n`;

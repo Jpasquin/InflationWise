@@ -5,8 +5,19 @@
         Your Finances
       </div>
       <div class="p-4 my-4 rounded-lg bg-grey-3">
-        <div class="text-center text-2xl font-bold mb-4 opacity-60">Salary</div>
+        <div class="text-center text-2xl font-bold mb-4 opacity-60">Annual Revenue</div>
         <q-input dense borderless v-model="salary" class="bg-white px-4 rounded-lg">
+          <template v-slot:prepend>
+            <span class="text-base">
+              $
+            </span>
+          </template>
+        </q-input>
+      </div>
+
+      <div class="p-4 my-4 rounded-lg bg-grey-3">
+        <div class="text-center text-2xl font-bold mb-4 opacity-60">Value of Assets</div>
+        <q-input dense borderless v-model="assets" class="bg-white  px-4 rounded-lg">
           <template v-slot:prepend>
             <span class="text-base">
               $
@@ -82,9 +93,7 @@
 <script setup>
 import { ref, watch, nextTick, defineEmits } from 'vue';
 import { useCalculateDebt } from 'src/services/calculatorHandling';
-import { useAppStore } from 'src/stores/app';
 
-const appStore = useAppStore();
 const { calculateDebt } = useCalculateDebt();
 const emit = defineEmits(['updateCalculator']);
 
@@ -101,12 +110,14 @@ const createNewDebt = () => ({
 const debts = ref([createNewDebt()])
 const debtsContainer = ref(null) // New reference for the container
 const salary = ref(0)
+const assets = ref(0)
 const monthlyExpenses = ref(0)
 
 const calculatorObject = ref({
   salary,
   monthlyExpenses,
-  debts
+  debts,
+  assets
 })
 
 const handleDebtCalculation = (remainingBalance, monthlyPayment, interestRate) => {
@@ -136,8 +147,9 @@ const addDebt = () => {
 watch([salary, monthlyExpenses, debts], () => {
   calculatorObject.value = {
     salary: salary.value,
-    monthlyExpenses: monthlyExpenses.value,
-    debts: debts.value.map(debt => ({ ...debt }))
+    spending: monthlyExpenses.value,
+    debts: [... debts.value.map(debt => ({ ...debt })) ],
+    assets: assets.value
   };
 
   emit('updateCalculator', calculatorObject.value);
