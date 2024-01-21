@@ -1,18 +1,15 @@
 <template>
   <q-page class="w-full! py-4 bg-white">
-    <div class="flex flex-col justify-between m-auto text-center h-[490px]">
-      <div class="text-5xl font-bold">
+    <div class="flex flex-col m-auto text-center mb-6">
+      <div class="text-5xl font-bold pb-4">
         Empowering Your Financial Future in an Inflating World.
       </div>
 
-      <q-btn
-        no-caps
-        unelevated
-        label="See Inflations Impact on You"
-        color="primary"
-        @click="$router.push('/analysis')"
-        class="p-4 rounded-lg w-fit flex m-auto"
-      />
+      <div class="text-xl">
+        We use AI to deliver an analysis of inflation on your finances and insightful strategies tailored to help you effectively counter the impact of inflation.
+      </div>
+
+      <q-icon name="query_stats" class="text-[160px] text-primary m-auto" />
     </div>
 
     <div>
@@ -20,7 +17,7 @@
         What does inflation impact?
       </div>
 
-      <div class="text-xl pb-4">
+      <div class="text-xl pb-10">
         Inflation affects virtually every aspect of our finances, subtly altering the value of money over time. 
         Our calculator is designed to help you navigate through these changes by assessing how inflation impacts various financial commitments.
       </div>
@@ -80,42 +77,53 @@
       </div>
     </div>
 
-    <div>
+    <div class="my-8">
       <div class="text-center text-5xl font-bold py-4">
         Frequently Asked Questions
       </div>
 
       <div class="grid grid-cols-1 gap-4">
         <div class="text-center text-2xl font-bold rounded-xl">
-          Lorem ipsum
+          What does we aim to achieve for our users?
+        </div>
+
+        <div class="text-center text-xl font-bold rounded-xl opacity-60">
+          The web app serves as a digital solution designed to help Sun Life clients understand the impact of inflation on their personal finances and assets. It provides strategies and insights related to managing various financial aspects, including student loans, mortgages, car payments, and more.
         </div>
 
         <q-separator />
 
         <div class="text-center text-2xl font-bold rounded-xl">
-          Lorem ipsum
+          How does the debt calculator work, and what parameters does it consider?
+        </div>
+
+        <div class="text-center text-xl font-bold rounded-xl opacity-60">
+          The debt calculator takes into account specific financial data provided by the user, such as payoff length, total interest, and total payments for each debt (e.g., credit cards, auto loans, mortgages). It calculates and analyzes the impact of inflation on these debts, considering factors like the current inflation rate and the user's total assets.
         </div>
 
         <q-separator />
 
         <div class="text-center text-2xl font-bold rounded-xl">
-          Lorem ipsum
+          How does the web app empower users to make informed financial decisions in the face of inflation?
+        </div>
+
+        <div class="text-center text-xl font-bold rounded-xl opacity-60">
+          The web app empowers users by providing personalized analyses of the impact of inflation on their spending, assets, and debt obligations. By offering actionable insights and strategies, it enables users to make informed decisions to navigate and prepare for future financial scenarios.
         </div>
 
         <q-separator />
 
         <div class="text-center text-2xl font-bold rounded-xl">
-          Lorem ipsum
+          In what ways can users leverage the web app's features to optimize their financial well-being over time?
+        </div>
+
+        <div class="text-center text-xl font-bold rounded-xl opacity-60">
+          Users can leverage the web app to not only understand the immediate impact of inflation but also to project and optimize their future net worth. Through features like the debt calculator and personalized financial analyses, the web app equips users with tools to make strategic financial decisions that align with their long-term goals.
         </div>
       </div>
     </div>
   </q-page>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'IndexPage'
-})
+<script setup>
 </script>

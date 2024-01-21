@@ -12,7 +12,7 @@
           label="Continue"
           color="primary"
           @click="showStepper = true"
-          class="p-4 rounded-lg w-fit flex m-auto"
+          class="px-4 py-2 rounded-lg w-fit flex m-auto"
         />
       </div>
     </transition>
@@ -43,15 +43,15 @@
           icon="info"
           :done="step > 2"
         >
-          <the-inflation-impact :impact="impact" />
+          <the-inflation-impact ref="inflationImpactRef" :impact="impact" />
         </q-step>
 
         <q-step
           :name="3"
           title="Strategies"
-          icon="strategy"
+          icon="info"
         >
-          <the-strategies />
+          <the-strategies ref="strategiesRef" :strategies="strategies" />
         </q-step>
       </q-stepper>
     </transition>
@@ -60,18 +60,19 @@
       <div class="max-w-[1200px]">
         <q-btn
           no-caps
-          flat
-          v-if="step > 1"
-          color="primary"
-          label="Back"
-          @click="$refs.stepper.previous()"
+          unelevated
+          @click="step === 3 ? $refs.stepper.previous() : onContinue()"
+          color="primary" :label="step === 3 ? 'Back' : 'Continue'"
+          :loading="loading"
           class="px-4 py-2 rounded-lg w-fit mr-2"
         />
         <q-btn
+          v-if="step > 1"
           no-caps
-          unelevated
-          @click="onContinue()"
-          color="primary" :label="step === 3 ? 'Finish' : 'Continue'"
+          outline
+          :disabled="loading"
+          @click="exportToPdf(step)"
+          color="primary" label="Export to PDF"
           class="px-4 py-2 rounded-lg w-fit"
         />
       </div>
@@ -91,16 +92,34 @@ const step = ref(1)
 const showStepper = ref(false)
 const showIntro = ref(false)
 const calculatorObject = ref({});
+const inflationImpactRef = ref(null);
+const strategiesRef = ref(null);
+const stepper = ref(null);
 const impact = ref(null);
 const strategies = ref(null)
+const loading = ref(false)
+
+const exportToPdf = (step) => {
+  switch (step) {
+    case 2:
+      console.log('working')
+      inflationImpactRef.value.generatePDF();
+      break;
+    case 3:
+      strategiesRef.value.generatePDF();
+      break;
+  }
+}
 
 const onContinue = async () => {
-  const response = await appStore.onCreateAnalysis(calculatorObject.value);
-  impact.value = response.impact;
-  stepper.next();
-  // strategies.value = response.strategies
-  console.log(response)
-
+  stepper.value.next();
+  if (step.value === 2) {
+    loading.value = true
+    const response = await appStore.onCreateAnalysis(calculatorObject.value);
+    impact.value = response.impact;
+    strategies.value = response.strategies;
+    loading.value = false
+  }
 }
 
 onMounted(() => {

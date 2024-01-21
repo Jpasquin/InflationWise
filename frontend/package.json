@@ -17,6 +17,8 @@
     "@unocss/preset-uno": "^0.58.3",
     "@unocss/webpack": "^0.58.3",
     "axios": "^1.6.5",
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
     "pinia": "^2.1.7",
     "quasar": "^2.6.0",
     "unocss": "^0.58.3",
