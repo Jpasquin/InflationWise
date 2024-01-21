@@ -11,9 +11,9 @@
         <q-btn
           no-caps
           unelevated
-          label="Start Calculating Now"
+          label="Get your Analysis"
           color="primary"
-          @click="$router.push('/calculator')"
+          @click="$router.push('/analysis')"
           class="p-2 px-4 rounded-lg h-fit"
         />
       </q-toolbar>

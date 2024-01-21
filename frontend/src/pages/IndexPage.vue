@@ -8,9 +8,9 @@
       <q-btn
         no-caps
         unelevated
-        label="See Our Calculator Here"
+        label="See Inflations Impact on You"
         color="primary"
-        @click="$router.push('/calculator')"
+        @click="$router.push('/analysis')"
         class="p-4 rounded-lg w-fit flex m-auto"
       />
     </div>
