@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -22,7 +21,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        # Specify the path to package-lock.json for caching
         cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
 
     # Commands to run in the frontend directory
     - name: Install dependencies
