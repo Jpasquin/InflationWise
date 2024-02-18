@@ -95,7 +95,7 @@ Based on a ___% inflation rate, your yearly post-tax salary of $___, monthly spe
 
 
 After this, answer the second prompt and separate them with ****. This is the second prompt. I really need the 4 stars to separate the two prompts.
-Based on the "Financial Report on the Impact of Inflation" produces customized strategies and advice to give the client to improve their financial circumstances. List them as numeric bullet points where the first number is what we do first and everything is consecutive. Include numbers from the report to show that the strategies are personalized.
+Based on the "Financial Report on the Impact of Inflation" produces customized strategies and advice to give the client to improve their financial circumstances. List them as numeric bullet points where the first number is what we do first and everything is consecutive. Include numbers from the report to show that the strategies are personalized. Provide the answer in the same format of the first one.
 `,
     },
   ];
