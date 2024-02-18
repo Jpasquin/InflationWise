@@ -10,7 +10,7 @@ export const useAppStore = defineStore('appStore', {
     },
     async testApi () {
       try {
-        const response = await axios.get('http://localhost:3000/test');
+        const response = await axios.get('https://inflation-wise-backend.onrender.com/test');
         console.log(response.data); // 'working'
         return response.data; // Return the response data
       } catch (error) {
@@ -20,7 +20,7 @@ export const useAppStore = defineStore('appStore', {
     async onCreateAnalysis (data) {
       console.log(data)
       try {
-        const response = await axios.post('http://localhost:3000/createAnalysis', data);
+        const response = await axios.post('https://inflation-wise-backend.onrender.com/createAnalysis', data);
         return response.data;
       } catch (error) {
         console.error('There was an error with the Axios operation:', error);
