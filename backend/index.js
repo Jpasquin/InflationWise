@@ -1,17 +1,21 @@
 // app.js
-const apiKey = "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";
+import dotenv from 'dotenv';
 import OpenAI from "openai";
 import express from "express";
 import cors from "cors";
 import bodyParser from 'body-parser';
 
+dotenv.config();
+
 const app = express();
 
 app.use(bodyParser.json());
 
-const openai = new OpenAI({ apiKey: apiKey });
 
 const port = process.env.PORT || 3000;
+const apiKey = process.env.API_KEY;
+const openai = new OpenAI({ apiKey: apiKey });
+
 
 app.use(cors());
 app.post("/createAnalysis", async (req, res) => {
