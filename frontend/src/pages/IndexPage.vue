@@ -18,7 +18,7 @@
       </div>
 
       <div class="text-xl pb-10">
-        Inflation affects virtually every aspect of our finances, subtly altering the value of money over time. 
+        Inflation affects virtually every aspect of our finances, subtly altering the value of money over time.
         Our calculator is designed to help you navigate through these changes by assessing how inflation impacts various financial commitments.
       </div>
 
@@ -30,8 +30,8 @@
 
           <div class="text-center text-base opacity-60">
           A mortgage financial plan provides a detailed overview of your housing-related finances.
-          It encompasses your current mortgage details, your homeownership goals, and the strategies in place to achieve those goals. 
-          A well-thought-out mortgage plan should include insights into your monthly cash flow, savings allocated for mortgage payments, strategies for paying down debt, and considerations for potential interest rate changes. 
+          It encompasses your current mortgage details, your homeownership goals, and the strategies in place to achieve those goals.
+          A well-thought-out mortgage plan should include insights into your monthly cash flow, savings allocated for mortgage payments, strategies for paying down debt, and considerations for potential interest rate changes.
           Additionally, it should factor in insurance coverage relevant to homeownership.
           </div>
         </div>
@@ -42,9 +42,9 @@
           </div>
 
           <div class="text-center text-base opacity-60">
-          Crafting a financial plan for car payments involves creating a comprehensive picture of your automotive-related finances. 
-          This includes details about your current auto loan, your goals regarding vehicle ownership, and the strategies you've established to meet those objectives. 
-          An effective car payment plan should delve into your monthly cash flow, the portion allocated for car payments, strategies for managing and potentially paying off car debt, and considerations for potential changes in interest rates. 
+          Crafting a financial plan for car payments involves creating a comprehensive picture of your automotive-related finances.
+          This includes details about your current auto loan, your goals regarding vehicle ownership, and the strategies you've established to meet those objectives.
+          An effective car payment plan should delve into your monthly cash flow, the portion allocated for car payments, strategies for managing and potentially paying off car debt, and considerations for potential changes in interest rates.
           It should also address insurance coverage relevant to your vehicle.
           </div>
         </div>
@@ -55,9 +55,9 @@
           </div>
 
           <div class="text-center text-base opacity-60">
-          A financial plan for student loans is a detailed roadmap for managing your education-related finances. 
-          It outlines your current student loan situation, your educational goals, and the strategies you've put in place to achieve those goals. 
-          A robust student loan plan should cover aspects such as your monthly cash flow, funds earmarked for loan repayments, effective strategies for student debt management, and considerations for potential changes in interest rates. 
+          A financial plan for student loans is a detailed roadmap for managing your education-related finances.
+          It outlines your current student loan situation, your educational goals, and the strategies you've put in place to achieve those goals.
+          A robust student loan plan should cover aspects such as your monthly cash flow, funds earmarked for loan repayments, effective strategies for student debt management, and considerations for potential changes in interest rates.
           It may also involve planning for ongoing educational expenses and insurance coverage.
           </div>
         </div>
@@ -68,9 +68,9 @@
           </div>
 
           <div class="text-center text-base opacity-60">
-          A financial plan for other debts takes a holistic approach to managing various financial obligations beyond mortgages, car payments, and student loans. 
-          This plan offers a comprehensive view of your current debt landscape, your goals for debt reduction, and the strategies you've outlined to accomplish those objectives. 
-          A well-rounded plan for other debts should encompass details about your monthly cash flow, funds allocated for debt repayment, effective strategies for minimizing debt, and considerations for potential changes in interest rates. 
+          A financial plan for other debts takes a holistic approach to managing various financial obligations beyond mortgages, car payments, and student loans.
+          This plan offers a comprehensive view of your current debt landscape, your goals for debt reduction, and the strategies you've outlined to accomplish those objectives.
+          A well-rounded plan for other debts should encompass details about your monthly cash flow, funds allocated for debt repayment, effective strategies for minimizing debt, and considerations for potential changes in interest rates.
           It may also involve planning for insurance coverage relevant to your overall debt portfolio.
           </div>
         </div>
@@ -84,7 +84,7 @@
 
       <div class="grid grid-cols-1 gap-4">
         <div class="text-center text-2xl font-bold rounded-xl">
-          What does we aim to achieve for our users?
+          What do we aim to achieve for our users?
         </div>
 
         <div class="text-center text-xl font-bold rounded-xl opacity-60">
