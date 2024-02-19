@@ -5,7 +5,7 @@
         <img :src="robotLoading" alt="Description" class="h-[300px] w-[360px] mr-[-28px]" />
 
         <div class="animate-pulse text-2xl text-center mr-[-28px]">
-          Generating your Report
+          Generating your Report <br> (This may take 1 to 2 minutes.)
         </div>
       </div>
 
